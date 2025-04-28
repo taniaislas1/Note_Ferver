@@ -42,6 +42,11 @@ class RegisterFragment : Fragment() {
 
     }
 
+    binding.registerButton.setOnClickListener {
+        viewModel.requestSignUp(binding.emailTiet.text.toString(),
+            binding.passwordTiet.text.toString())
+    }
+
         binding.nameTiet.addTextChangedListener {
             if (binding.nameTiet.text.toString().isEmpty()) {
                 binding.nameTil.error = "Por favor introduce tu nombre"
