@@ -5,18 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class SignInViewModel: ViewModel() {
+class RegisterViewModel: ViewModel() {
 
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean>
         get() = _loaderState
-    private val _sessionValid = MutableLiveData<Boolean>()
-    val sessionValid: LiveData<Boolean>
-        get() = _sessionValid
     private val firebase = FirebaseAuth.getInstance()
-
-    fun requestSignIn(email: String, password: String) {
-
-
-    }
 }
