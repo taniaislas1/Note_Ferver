@@ -34,7 +34,7 @@ class PendingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_pendingFragment_to_addFragment)
         }
     }
 

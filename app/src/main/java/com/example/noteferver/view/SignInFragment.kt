@@ -76,7 +76,7 @@ class SignInFragment : Fragment() {
         }
         viewModel.sessionValid.observe(viewLifecycleOwner) { validSession ->
             if (validSession) {
-                val intent = Intent(activity, MainActivity::class.java)
+                val intent = Intent(activity, ListActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
             } else {
