@@ -79,7 +79,16 @@ class RegisterFragment : Fragment() {
     viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
         communicator.showLoader(loaderState)
     }
+
+        viewModel.validRegister.observe(viewLifecycleOwner) { validRegister ->
+            if (validRegister) {
+                findNavController().navigate(R.id.action_registerFragment_to_signInFragment)
+            } else {
+                Toast.makeText(activity, "Ingresa todos los datos", Toast.LENGTH_SHORT).show()
+            }
         }
+
+    }
 
 
 override fun onDestroyView() {
