@@ -1,5 +1,6 @@
 package com.example.noteferver.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.noteferver.R
 import com.example.noteferver.databinding.SignInFragmentBinding
 import com.example.noteferver.viewModel.SignInViewModel
+import com.example.noteferver.utils.FragmentCommunicator
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -20,6 +22,7 @@ class SignInFragment : Fragment() {
 
     private var _binding: SignInFragmentBinding? = null
     private val binding get() = _binding!!
+    private lateinit var communicator: FragmentCommunicator
     private val viewModel by viewModels<SignInViewModel>()
     var isValid: Boolean = false
 
@@ -29,7 +32,9 @@ class SignInFragment : Fragment() {
     ): View {
 
         _binding = SignInFragmentBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as OnboardingActivity
         setupView()
+        setupObservers()
         return binding.root
 
     }
@@ -61,6 +66,21 @@ class SignInFragment : Fragment() {
                 isValid = false
             } else {
                 isValid = true
+            }
+        }
+    }
+
+    private fun setupObservers() {
+        viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
+            communicator.showLoader(loaderState)
+        }
+        viewModel.sessionValid.observe(viewLifecycleOwner) { validSession ->
+            if (validSession) {
+                val intent = Intent(activity, MainActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+            } else {
+                Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
             }
         }
     }
