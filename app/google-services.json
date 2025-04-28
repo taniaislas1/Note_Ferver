@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "80771754377",
+    "project_id": "noteferver",
+    "storage_bucket": "noteferver.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80771754377:android:2b300ffa69bff96b011958",
+        "android_client_info": {
+          "package_name": "com.example.noteferver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBodVEr80QHil_k0031dJQdgcZrH0Z9i6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
